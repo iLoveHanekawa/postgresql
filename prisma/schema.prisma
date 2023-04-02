@@ -13,12 +13,12 @@ datasource db {
 model Book {
   id       String @id @default(uuid())
   title    String @unique
-  author   Author @relation(fields: [authorId], references: [id])
+  author   Author @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId String
 }
 
 model Author {
   id    String @id @default(uuid())
   name  String
-  books Book[]
+  books Book[] 
 }

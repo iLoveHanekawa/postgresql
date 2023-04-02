@@ -2,6 +2,8 @@
 // import useSWR from 'swr'
 
 import { prisma } from "@/lib/prisma"
+import Form from "./Form"
+import Delete from "@/components/Delete"
 
 const getAuthors = async function () {
     const res = await fetch('http://localhost:3000/api/authors', { cache: 'no-store' })
@@ -29,5 +31,7 @@ export default async function Author () {
                 <div className = 'w-1/2'>{val.name}</div>
             </li>
         })}
+        <Form />
+        <Delete endpoint = {'authors'} />
     </ul>
 }

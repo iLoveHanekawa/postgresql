@@ -1,3 +1,6 @@
+import Form from "./Form"
+import Delete from "@/components/Delete"
+
 const getBooks = async () => {
     const res = await fetch('http://localhost:3000/api/books', { headers: {
         'content-type': 'application/json'
@@ -12,7 +15,7 @@ export default async function Page() {
         <div className = 'pl-3 py-3 bg-pink-900 flex justify-center font-bold'>
             <div className = 'w-1/3'>ID</div>
             <div className = 'w-1/3'>TITLE</div>
-            <div className = 'w-1/3'>AUTHORID</div>
+            <div className = 'w-1/3'>AUTHOR</div>
         </div>
         {books.map((val, i) => {
             return <li className = {`${i % 2 === 0? 'bg-pink-700': 'bg-pink-800'} py-3 pl-3 flex justify-center`} key = {i}>
@@ -21,5 +24,7 @@ export default async function Page() {
                 <div className = 'w-1/3'>{val.author.name}</div>
             </li>
         })}
+        <Form />
+        <Delete endpoint = {'books'} />
     </ul>
 }

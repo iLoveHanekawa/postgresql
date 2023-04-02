@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export async function GET() {
@@ -16,5 +16,24 @@ export async function GET() {
     })
     return NextResponse.json({
         data: books
+    })
+}
+
+export async function POST(request: NextRequest) {
+    const { title, authorId } = await request.json()
+    await prisma.book.create({
+        data: {
+            title,
+            authorId
+        }
+    })
+}
+
+export async function DELETE(request: NextRequest) {
+    const { id } = await request.json()
+    await prisma.book.delete({
+        where: {
+            id
+        }
     })
 }

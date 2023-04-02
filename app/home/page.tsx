@@ -1,3 +1,3 @@
 export default function Page() {
-    return <div>Home</div>
+    return <div>Nothing to see here. Click book or author.</div>
 }
