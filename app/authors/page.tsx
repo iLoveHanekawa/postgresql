@@ -4,6 +4,7 @@
 import { prisma } from "@/lib/prisma"
 import Form from "./Form"
 import Delete from "@/components/Delete"
+import Update from "@/components/Update"
 
 const getAuthors = async function () {
     const res = await fetch('http://localhost:3000/api/authors', { cache: 'no-store' })
@@ -33,5 +34,6 @@ export default async function Author () {
         })}
         <Form />
         <Delete endpoint = {'authors'} />
+        <Update endpoint = {'authors'} />
     </ul>
 }

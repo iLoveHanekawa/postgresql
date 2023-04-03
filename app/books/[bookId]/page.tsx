@@ -1,6 +1,6 @@
 const getBook = async (id: string) => {
     const res = await fetch(`http://localhost:3000/api/books/${id}`, { headers: {
-        'content-type': 'application/json'
+        'Content-Type': 'application/json'
     }})
     const book = await res.json()
     return book.data

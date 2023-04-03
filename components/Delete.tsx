@@ -3,7 +3,7 @@
 import { useState, FormEvent } from 'react'
 
 type DeleteProps = {
-    endpoint: string
+    endpoint: 'authors' | 'books'
 }
 
 export default function Delete({ endpoint }: DeleteProps) {
@@ -14,13 +14,13 @@ export default function Delete({ endpoint }: DeleteProps) {
         await fetch(`http://localhost:3000/api/${endpoint}`, {
             method: 'DELETE',
             headers: {
-                'content-type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ id })
         })
     }} className = 'flex items-center gap-3 pt-2'>
         <div className = 'gap-3 flex items-end py-3'>
-            <label>Id</label>
+            <label>ID</label>
             <input value = {id} onChange = {e => {
                 setId(e.currentTarget.value)
             }} className = 'text-gray-600 pl-2 text-sm rounded-md py-1 focus:outline-none'/>

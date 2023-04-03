@@ -1,9 +1,10 @@
 import Form from "./Form"
 import Delete from "@/components/Delete"
+import Update from "@/components/Update"
 
 const getBooks = async () => {
     const res = await fetch('http://localhost:3000/api/books', { headers: {
-        'content-type': 'application/json'
+        'Content-Type': 'application/json'
     }, cache: 'no-store'})
     const books = await res.json()
     return books.data
@@ -26,5 +27,6 @@ export default async function Page() {
         })}
         <Form />
         <Delete endpoint = {'books'} />
+        <Update endpoint = {'books'} />
     </ul>
 }

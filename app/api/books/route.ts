@@ -37,3 +37,15 @@ export async function DELETE(request: NextRequest) {
         }
     })
 }
+
+export async function UPDATE(req: NextRequest) {
+    const { id, newName } = await req.json()
+    await prisma.book.update({
+        data: {
+            title: newName
+        },
+        where: {
+            id
+        }
+    })
+}

@@ -8,7 +8,7 @@ export default function Form () {
         await fetch('http://localhost:3000/api/books', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 title, authorId
