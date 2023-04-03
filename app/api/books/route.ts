@@ -21,26 +21,28 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
     const { title, authorId } = await request.json()
-    await prisma.book.create({
+    const newBook = await prisma.book.create({
         data: {
             title,
             authorId
         }
     })
+    return NextResponse.json({ data: newBook })
 }
 
 export async function DELETE(request: NextRequest) {
     const { id } = await request.json()
-    await prisma.book.delete({
+    const delBook = await prisma.book.delete({
         where: {
             id
         }
     })
+    return NextResponse.json({ data: delBook })
 }
 
-export async function UPDATE(req: NextRequest) {
+export async function PATCH(req: NextRequest) {
     const { id, newName } = await req.json()
-    await prisma.book.update({
+    const updBook = await prisma.book.update({
         data: {
             title: newName
         },
@@ -48,4 +50,5 @@ export async function UPDATE(req: NextRequest) {
             id
         }
     })
+    return NextResponse.json({ data: updBook })
 }
